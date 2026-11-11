@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kit de estrategias de intrevencion trabajo social Uniquindio</title>
+  <link rel="stylesheet" href="estilo.css">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="wiki-header">
+    <div class="wiki-logo">Kit de estrategias de intrevencion<span>trabajo social Uniquindio</span></div>
+    <nav class="wiki-nav">
+    </nav>
+  </header>
+
+  <div class="wiki-container">
+
+    <aside class="wiki-sidebar">
+      <h3>Índice</h3>
+      <ul>
+        <li><a href="#">1</a></li>
+        <li><a href="#" class="active">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+      </ul>
+    </aside>
+
+    <main class="wiki-main">
+      <div class="article-header">
+        <h1></h1>
+        <p class="subtitle"></p>
+      </div>
+
+      <div class="stage-wrapper">
+        <div class="interaction-zone" id="menuContainer">
+
+          <div class="item item-left">
+            <div class="item-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Caja de Herramientas">
+              <span>laboral</span>
+            </div>
+          </div>
+
+          <div class="backpack-container" id="backpackBtn" title="Haz clic para inspeccionar">
+            <div class="glow-effect"></div>
+            <img src="https://cdn-icons-png.flaticon.com/512/2897/2897785.png" alt="Mochila" class="backpack-img">
+          </div>
+
+          <!-- Item Derecho: Jeringa -->
+          <div class="item item-right">
+            <div class="item-card">
+              <img src="https://cdn-icons-png.flaticon.com/512/1399/1399671.png" alt="Jeringa">
+              <span>salud</span>
+            </div>
+          </div>
+
+        </div>
+        <p class="instruction-hint"></p>
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Script para la animación y despliegue -->
+  <script>
+    const backpackBtn = document.getElementById('backpackBtn');
+    const menuContainer = document.getElementById('menuContainer');
+
+    backpackBtn.addEventListener('click', () => {
+      menuContainer.classList.toggle('active');
+
+      // Animación sutil de pulso al hacer clic
+      backpackBtn.classList.add('pulse');
+      setTimeout(() => {
+        backpackBtn.classList.remove('pulse');
+      }, 400);
+    });
+  </script>
+</body>
+</html>
