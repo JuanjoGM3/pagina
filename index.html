@@ -3,78 +3,265 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kit de estrategias de intrevencion trabajo social Uniquindio</title>
+  <title>Kit de estrategias de intervención Trabajo Social Uniquindio</title>
   <link rel="stylesheet" href="estilo.css">
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
   <header class="wiki-header">
-    <div class="wiki-logo">Kit de estrategias de intrevencion<span>trabajo social Uniquindio</span></div>
-    <nav class="wiki-nav">
-    </nav>
+    <div class="wiki-logo">Kit de estrategias de intervención <span>trabajo social Uniquindio</span></div>
+    <nav class="wiki-nav"></nav>
   </header>
 
   <div class="wiki-container">
 
-    <aside class="wiki-sidebar">
-      <h3>Índice</h3>
-      <ul>
-        <li><a href="#">1</a></li>
-        <li><a href="#" class="active">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-      </ul>
-    </aside>
-
     <main class="wiki-main">
       <div class="article-header">
-        <h1></h1>
-        <p class="subtitle"></p>
+        <h1>Kit de estrategias de intervención Trabajo Social Uniquindio</h1>
+        <p class="subtitle" id="mainSubtitle">Haz clic en la mochila para abrir las opciones, luego selecciona Laboral o Salud.</p>
       </div>
 
       <div class="stage-wrapper">
         <div class="interaction-zone" id="menuContainer">
 
-          <div class="item item-left">
+          <!-- Botón Laboral (Izquierda) -->
+          <div class="item item-left" id="btnLaboral" title="Haz clic para ver/ocultar estrategias Laborales">
             <div class="item-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/2921/2921222.png" alt="Caja de Herramientas">
+              <img src="https://cdn-icons-png.flaticon.com/512/538/538161.png" alt="Caja de Herramientas">
               <span>laboral</span>
             </div>
           </div>
 
-          <div class="backpack-container" id="backpackBtn" title="Haz clic para inspeccionar">
+          <!-- Mochila Central -->
+          <div class="backpack-container" id="backpackBtn" title="Haz clic para abrir/cerrar el menú">
             <div class="glow-effect"></div>
-            <img src="https://cdn-icons-png.flaticon.com/512/2897/2897785.png" alt="Mochila" class="backpack-img">
+            <img src="https://cdn-icons-png.flaticon.com/512/5764/5764072.png" alt="Mochila" class="backpack-img">
           </div>
 
-          <!-- Item Derecho: Jeringa -->
-          <div class="item item-right">
+          <div class="item item-right" id="btnSalud" title="Haz clic para ver/ocultar estrategias de Salud">
             <div class="item-card">
-              <img src="https://cdn-icons-png.flaticon.com/512/1399/1399671.png" alt="Jeringa">
+              <img src="https://cdn-icons-png.flaticon.com/512/1513/1513389.png" alt="Jeringa">
               <span>salud</span>
             </div>
           </div>
 
+
+          <div class="orbit-circles" id="orbitLaboral"></div>
+          <div class="orbit-circles" id="orbitSalud"></div>
+
+          <div class="content-panel" id="contentPanel">
+            <button class="close-panel" id="closePanelBtn">&times;</button>
+            <h2 id="panelTitle">Título del ámbito</h2>
+            <span id="panelTag" class="cloud-bubble">Etiqueta</span>
+            <div class="panel-body" id="panelBody">
+
+              <p></p>
+            </div>
+          </div>
+
         </div>
-        <p class="instruction-hint"></p>
+        <p class="instruction-hint" id="instructionHint">Haz clic en la mochila central</p>
       </div>
     </main>
-
   </div>
 
-  <!-- Script para la animación y despliegue -->
   <script>
     const backpackBtn = document.getElementById('backpackBtn');
     const menuContainer = document.getElementById('menuContainer');
+    const btnLaboral = document.getElementById('btnLaboral');
+    const btnSalud = document.getElementById('btnSalud');
+    const orbitLaboral = document.getElementById('orbitLaboral');
+    const orbitSalud = document.getElementById('orbitSalud');
+    const instructionHint = document.getElementById('instructionHint');
 
-    backpackBtn.addEventListener('click', () => {
+    // Elementos del panel de contenido
+    const contentPanel = document.getElementById('contentPanel');
+    const panelTitle = document.getElementById('panelTitle');
+    const panelTag = document.getElementById('panelTag');
+    const panelBody = document.getElementById('panelBody');
+    const closePanelBtn = document.getElementById('closePanelBtn');
+
+    // Datos Laborales con información personalizable para cada tarjeta
+    const contenidoLaboral = [
+      {
+        title: "Prioridades",
+        tag: "Ser",
+        color: "#3b82f6",
+        pos: "lab-1",
+        info: ""
+      },
+      {
+        title: "Documentos clave",
+        tag: "Conocer",
+        color: "#f59e0b",
+        pos: "lab-2",
+        info: ""
+      },
+      {
+        title: "Nuestro Rol",
+        tag: "Ser / Hacer",
+        color: "#10b981",
+        pos: "lab-3",
+        info: ""
+      },
+      {
+        title: "Los Desafíos",
+        tag: "Ser / Hacer",
+        color: "#059669",
+        pos: "lab-4",
+        info: ""
+      },
+      {
+        title: "Métodos",
+        tag: "Hacer",
+        color: "#14b8a6",
+        pos: "lab-5",
+        info: ""
+      }
+    ];
+
+    // Datos de Salud con información personalizable
+    const contenidoSalud = [
+      {
+        title: "Prioridades",
+        tag: "Ser",
+        color: "#6366f1",
+        pos: "sal-1",
+        info: ""
+      },
+      {
+        title: "Documentos clave",
+        tag: "Conocer",
+        color: "#d97706",
+        pos: "sal-2",
+        info: ""
+      },
+      {
+        title: "Nuestro Rol",
+        tag: "Ser / Hacer",
+        color: "#22c55e",
+        pos: "sal-3",
+        info: ""
+      },
+      {
+        title: "Los Desafíos",
+        tag: "Ser / Hacer",
+        color: "#16a34a",
+        pos: "sal-4",
+        info: ""
+      },
+      {
+        title: "Métodos",
+        tag: "Hacer",
+        color: "#0d9488",
+        pos: "sal-5",
+        info: ""
+      }
+    ];
+
+    function limpiarOrbitas() {
+      orbitLaboral.innerHTML = '';
+      orbitLaboral.classList.remove('active');
+      orbitSalud.innerHTML = '';
+      orbitSalud.classList.remove('active');
+      btnLaboral.classList.remove('selected-persist');
+      btnSalud.classList.remove('selected-persist');
+    }
+
+    function cerrarPanel() {
+      contentPanel.classList.remove('active');
+    }
+
+    // 1. Clic en la mochila
+    backpackBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
       menuContainer.classList.toggle('active');
+      cerrarPanel();
 
-      // Animación sutil de pulso al hacer clic
+      if (!menuContainer.classList.contains('active')) {
+        limpiarOrbitas();
+        instructionHint.textContent = "Haz clic en la mochila central";
+      } else {
+        instructionHint.textContent = "Selecciona Laboral o Salud";
+      }
+
       backpackBtn.classList.add('pulse');
-      setTimeout(() => {
-        backpackBtn.classList.remove('pulse');
-      }, 400);
+      setTimeout(() => backpackBtn.classList.remove('pulse'), 400);
+    });
+
+    // Función auxiliar para renderizar los círculos y darles la acción de abrir el panel
+    function mostrarCirculos(data, contenedor) {
+      contenedor.innerHTML = '';
+      data.forEach(item => {
+        const wrapper = document.createElement('div');
+        wrapper.className = `orbit-item ${item.pos}`;
+        wrapper.innerHTML = `
+          <div class="circle-node" style="background-color: ${item.color};">
+            <span>${item.title}</span>
+          </div>
+          <div class="cloud-bubble">${item.tag}</div>
+        `;
+
+        // Al hacer clic en un círculo específico, se abre el panel con su información
+        wrapper.addEventListener('click', (e) => {
+          e.stopPropagation();
+          panelTitle.textContent = item.title;
+          panelTag.textContent = item.tag;
+          panelBody.innerHTML = `<p>${item.info}</p>`;
+          contentPanel.classList.add('active');
+        });
+
+        contenedor.appendChild(wrapper);
+      });
+      contenedor.classList.add('active');
+    }
+
+    // 2. Clic en Laboral
+    btnLaboral.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarPanel();
+
+      if (orbitLaboral.classList.contains('active')) {
+        limpiarOrbitas();
+        instructionHint.textContent = "Selecciona Laboral o Salud";
+      } else {
+        limpiarOrbitas();
+        btnLaboral.classList.add('selected-persist');
+        mostrarCirculos(contenidoLaboral, orbitLaboral);
+        instructionHint.textContent = "Estrategias del ámbito Laboral (Haz clic en un círculo para ver más)";
+      }
+    });
+
+    // 3. Clic en Salud
+    btnSalud.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarPanel();
+
+      if (orbitSalud.classList.contains('active')) {
+        limpiarOrbitas();
+        instructionHint.textContent = "Selecciona Laboral o Salud";
+      } else {
+        limpiarOrbitas();
+        btnSalud.classList.add('selected-persist');
+        mostrarCirculos(contenidoSalud, orbitSalud);
+        instructionHint.textContent = "Estrategias del ámbito Salud (Haz clic en un círculo para ver más)";
+      }
+    });
+
+    // Botón para cerrar el panel de información
+    closePanelBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      cerrarPanel();
+    });
+
+    // Clic fuera para resetear todo
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.interaction-zone')) {
+        menuContainer.classList.remove('active');
+        limpiarOrbitas();
+        cerrarPanel();
+        instructionHint.textContent = "Haz clic en la mochila central";
+      }
     });
   </script>
 </body>

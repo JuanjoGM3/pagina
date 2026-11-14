@@ -14,7 +14,6 @@ body {
     overflow: hidden;
 }
 
-/* Barra superior elegante */
 .wiki-header {
     height: 60px;
     background-color: #ffffff;
@@ -38,31 +37,12 @@ body {
     font-weight: 700;
 }
 
-.wiki-nav a {
-    color: #4b5563;
-    text-decoration: none;
-    margin-left: 20px;
-    font-size: 14px;
-    transition: color 0.2s;
-}
-
-.wiki-nav a:hover, .wiki-nav a.selected {
-    color: #111827;
-}
-
-.wiki-nav a.selected {
-    border-bottom: 2px solid #2563eb;
-    padding-bottom: 4px;
-}
-
-/* Contenedor principal de la Wiki */
 .wiki-container {
     display: flex;
     flex: 1;
     overflow: hidden;
 }
 
-/* Sidebar lateral */
 .wiki-sidebar {
     width: 260px;
     background-color: #ffffff;
@@ -90,15 +70,9 @@ body {
     text-decoration: none;
     color: #4b5563;
     font-size: 14px;
-    transition: all 0.2s;
     display: block;
     padding: 6px 10px;
     border-radius: 6px;
-}
-
-.wiki-sidebar a:hover {
-    background-color: #f3f4f6;
-    color: #111827;
 }
 
 .wiki-sidebar a.active {
@@ -107,7 +81,6 @@ body {
     font-weight: 500;
 }
 
-/* Contenido Principal */
 .wiki-main {
     flex: 1;
     background: radial-gradient(circle at center, #ffffff 0%, #f4f6f9 100%);
@@ -118,7 +91,7 @@ body {
 
 .article-header h1 {
     font-family: 'Cinzel', serif;
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 500;
     color: #111827;
     margin-bottom: 8px;
@@ -127,10 +100,9 @@ body {
 .subtitle {
     color: #6b7280;
     font-size: 14px;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
-/* Escenario Interactivo */
 .stage-wrapper {
     flex: 1;
     display: flex;
@@ -140,7 +112,6 @@ body {
     background: rgba(255, 255, 255, 0.7);
     border: 1px solid #e5e7eb;
     border-radius: 16px;
-    backdrop-filter: blur(10px);
     position: relative;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
 }
@@ -148,13 +119,13 @@ body {
 .interaction-zone {
     position: relative;
     width: 100%;
-    height: 250px;
+    height: 440px;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* Mochila Central con Efecto de Brillo */
+/* Mochila central */
 .backpack-container {
     position: relative;
     cursor: pointer;
@@ -168,14 +139,14 @@ body {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 90px;
-    height: 90px;
+    width: 100px;
+    height: 100px;
     background: rgba(37, 99, 235, 0.15);
     border-radius: 50%;
     filter: blur(15px);
     z-index: -1;
-    transition: opacity 0.3s;
     opacity: 0.6;
+    transition: opacity 0.3s;
 }
 
 .backpack-img {
@@ -186,52 +157,38 @@ body {
 }
 
 .backpack-container:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
-.backpack-container:hover .glow-effect {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1.3);
-}
-
-/* Tarjetas de los Elementos desplegables */
+/* Botones laterales (Laboral y Salud) */
 .item {
     position: absolute;
     opacity: 0;
     pointer-events: none;
     transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 8;
 }
 
 .item-card {
     background: #ffffff;
     border: 1px solid #e5e7eb;
-    padding: 10px 16px;
+    padding: 10px 18px;
     border-radius: 12px;
     display: flex;
     align-items: center;
     gap: 12px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    white-space: nowrap;
+    cursor: pointer;
 }
 
-.item-card img {
-    width: 36px;
-    height: 36px;
-    object-fit: contain;
-}
+.item-card img { width: 32px; height: 32px; object-fit: contain; }
+.item-card span { font-size: 13px; font-weight: 600; color: #1f2937; text-transform: capitalize; }
 
-.item-card span {
-    font-size: 13px;
-    font-weight: 500;
-    color: #1f2937;
-}
-
-/* Posiciones Iniciales (Ocultos en el centro) */
 .item-left, .item-right {
     transform: translateX(0) scale(0.5);
 }
 
-/* Posiciones Finales al Activar (.active) */
+/* Activar botones al abrir mochila */
 .interaction-zone.active .item-left {
     opacity: 1;
     pointer-events: auto;
@@ -244,15 +201,82 @@ body {
     transform: translateX(160px) scale(1);
 }
 
-/* Texto de guía inferior */
-.instruction-hint {
-    margin-top: 20px;
-    font-size: 13px;
-    color: #9ca3af;
-    letter-spacing: 0.5px;
+/* Persistencia cuando se selecciona un ámbito */
+.interaction-zone.active .item-left.selected-persist,
+.interaction-zone.active .item-right.selected-persist {
+    border-color: #2563eb;
+    box-shadow: 0 0 15px rgba(37, 99, 235, 0.3);
 }
 
-/* Animación de pulso */
+/* Contenedores de órbitas */
+.orbit-circles {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    display: none;
+}
+
+.orbit-circles.active {
+    display: block;
+    pointer-events: auto;
+}
+
+.orbit-item {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: fadeInScale 0.4s ease forwards;
+}
+
+.circle-node {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.cloud-bubble {
+    background: #e0f2fe;
+    color: #0369a1;
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 9px;
+    font-weight: 700;
+    margin-top: -5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Posiciones exclusivas a la IZQUIERDA (Ámbito Laboral) */
+.orbit-item.lab-1 { top: 30px; left: 10%; }
+.orbit-item.lab-2 { top: 120px; left: 2%; }
+.orbit-item.lab-3 { top: 240px; left: 5%; }
+.orbit-item.lab-4 { bottom: 20px; left: 15%; }
+.orbit-item.lab-5 { bottom: 20px; left: 35%; }
+
+/* Posiciones exclusivas a la DERECHA (Ámbito Salud) */
+.orbit-item.sal-1 { top: 30px; right: 10%; }
+.orbit-item.sal-2 { top: 120px; right: 2%; }
+.orbit-item.sal-3 { top: 240px; right: 5%; }
+.orbit-item.sal-4 { bottom: 20px; right: 15%; }
+.orbit-item.sal-5 { bottom: 20px; right: 35%; }
+
+@keyframes fadeInScale {
+    from { opacity: 0; transform: scale(0.4); }
+    to { opacity: 1; transform: scale(1); }
+}
+
 @keyframes pulseEffect {
     0% { transform: scale(1); }
     50% { transform: scale(0.92); }
@@ -261,4 +285,87 @@ body {
 
 .pulse {
     animation: pulseEffect 0.4s ease-in-out;
+}
+
+.instruction-hint {
+    margin-top: 15px;
+    font-size: 13px;
+    color: #9ca3af;
+    letter-spacing: 0.5px;
+}
+
+/* Estilos para el Panel de Contenido / Información */
+.content-panel {
+    position: absolute;
+    width: 60%;
+    height: 75%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    z-index: 50;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.9);
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.content-panel.active {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1);
+}
+
+.close-panel {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #6b7280;
+    transition: color 0.2s;
+}
+
+.close-panel:hover {
+    color: #111827;
+}
+
+.content-panel h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 10px;
+}
+
+.content-panel .cloud-bubble {
+    align-self: flex-start;
+    margin-bottom: 20px;
+}
+
+.panel-body {
+    flex: 1;
+    overflow-y: auto;
+    font-size: 14px;
+    color: #4b5563;
+    line-height: 1.6;
+    border-top: 1px solid #f3f4f6;
+    padding-top: 15px;
+}
+
+/* Permitir que los círculos se puedan hacer clic */
+.orbit-item {
+    cursor: pointer;
+}
+
+.circle-node {
+    transition: transform 0.2s;
+}
+
+.orbit-item:hover .circle-node {
+    transform: scale(1.08);
 }
