@@ -38,6 +38,7 @@
             <img src="https://cdn-icons-png.flaticon.com/512/5764/5764072.png" alt="Mochila" class="backpack-img">
           </div>
 
+          <!-- Botón Salud (Derecha) -->
           <div class="item item-right" id="btnSalud" title="Haz clic para ver/ocultar estrategias de Salud">
             <div class="item-card">
               <img src="https://cdn-icons-png.flaticon.com/512/1513/1513389.png" alt="Jeringa">
@@ -54,7 +55,6 @@
             <h2 id="panelTitle">Título del ámbito</h2>
             <span id="panelTag" class="cloud-bubble">Etiqueta</span>
             <div class="panel-body" id="panelBody">
-
               <p></p>
             </div>
           </div>
@@ -74,14 +74,13 @@
     const orbitSalud = document.getElementById('orbitSalud');
     const instructionHint = document.getElementById('instructionHint');
 
-    // Elementos del panel de contenido
     const contentPanel = document.getElementById('contentPanel');
     const panelTitle = document.getElementById('panelTitle');
     const panelTag = document.getElementById('panelTag');
     const panelBody = document.getElementById('panelBody');
     const closePanelBtn = document.getElementById('closePanelBtn');
 
-    // Datos Laborales con información personalizable para cada tarjeta
+    // Datos Laborales (7 elementos exactos)
     const contenidoLaboral = [
       {
         title: "Prioridades",
@@ -104,7 +103,7 @@
               "Según el artículo 5 del Código Sustantivo del Trabajo, el trabajo se define como toda actividad humana libre, material o intelectual, permanente o transitoria, que una persona natural ejecuta conscientemente al servicio de otra, bajo un contrato de trabajo. El artículo 25 de la Constitución Política establece que el trabajo es un derecho y una obligación social que goza de la especial protección del Estado en todas sus modalidades."
       },
       {
-        title: "Documentos clave",
+        title: "Documentos",
         tag: "conocer",
         color: "#10b981",
         pos: "lab-3",
@@ -135,7 +134,7 @@
               "• <strong>Herramienta del Kit:</strong> Guía Normativa de Derechos Laborales."
       },
       {
-        title: "Los Desafíos",
+        title: "Desafíos",
         tag: "Ser / Hacer",
         color: "#059669",
         pos: "lab-4",
@@ -160,10 +159,54 @@
               "• <strong>Acompañamiento al trabajador:</strong> apoyar los procesos de reintegración laboral después de accidentes, enfermedades o incapacidades prolongadas.<br>" +
               "• <strong>Desarrollo personal y profesional:</strong> impulsar oportunidades de reconocimiento, participación y crecimiento dentro de la organización.<br><br>" +
               "<strong>Aporte del Trabajo Social:</strong> contribuir a la construcción de entornos laborales saludables, donde se reconozcan las necesidades humanas y se promueva el bienestar de los trabajadores y de la organización."
+      },
+      {
+        title: "Normativa",
+        tag: "Ley",
+        color: "#2563eb",
+        pos: "lab-6",
+        info: "<strong>Normativa en el área laboral</strong><br><br>" +
+              "La normativa laboral comprende las leyes que protegen los derechos de los trabajadores, promueven condiciones de trabajo dignas y previenen situaciones que afectan su bienestar físico, mental y social.<br><br>" +
+              "• <strong>Constitución Política de Colombia de 1991</strong><br>" +
+              "  - <strong>Ente:</strong> Asamblea Nacional Constituyente.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Reconoce el trabajo como un derecho y establece principios mínimos de protección laboral.<br><br>" +
+              "• <strong>Código Sustantivo del Trabajo</strong><br>" +
+              "  - <strong>Ente:</strong> Congreso de la República de Colombia.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Regula las relaciones entre empleadores y trabajadores, estableciendo sus derechos, deberes y obligaciones.<br><br>" +
+              "• <strong>Ley 1010 de 2006</strong><br>" +
+              "  - <strong>Ente:</strong> Congreso de la República de Colombia.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Establece medidas para prevenir, corregir y sancionar el acoso laboral, protegiendo la dignidad de los trabajadores.<br><br>" +
+              "• <strong>Ley 1562 de 2012</strong><br>" +
+              "  - <strong>Ente:</strong> Congreso de la República de Colombia.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Modifica el Sistema General de Riesgos Laborales y fortalece la prevención de accidentes de trabajo y enfermedades laborales.<br><br>" +
+              "• <strong>Decreto 1072 de 2015</strong><br>" +
+              "  - <strong>Ente:</strong> Ministerio del Trabajo.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Reglamenta el sector trabajo e incluye las disposiciones del Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST).<br><br>" +
+              "• <strong>Resolución 2646 de 2008</strong><br>" +
+              "  - <strong>Ente:</strong> Ministerio de la Protección Social.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Establece disposiciones para identificar, evaluar, prevenir e intervenir los factores de riesgo psicosocial en el entorno laboral.<br><br>" +
+              "<strong>Aporte desde Trabajo Social:</strong><br>" +
+              "• Promover el bienestar laboral.<br>" +
+              "• Acompañar a los trabajadores.<br>" +
+              "• Prevenir situaciones de acoso laboral.<br>" +
+              "• Identificar problemáticas sociales y psicosociales.<br>" +
+              "• Fortalecer las relaciones y la convivencia laboral."
+      },
+      {
+        title: "Métodos",
+        tag: "Hacer",
+        color: "#047857",
+        pos: "lab-7",
+        info: "<strong>MÉTODOS EN EL ÁREA LABORAL</strong><br><br>" +
+              "• <strong>Evaluación e Intervención del Riesgo Psicosocial:</strong> Basado en la normativa colombiana (como la Batería de Riesgo Psicosocial del Ministerio del Trabajo), se aplican encuestas, grupos focales y entrevistas para medir factores intralaborales y extralaborales.<br><br>" +
+              "• <strong>Método de Trabajo Social de Grupo:</strong> Se utiliza para ejecutar capacitaciones, talleres de habilidades blandas, escuelas de liderazgo y grupos de apoyo para empleados con condiciones de salud específicas o próximos a la jubilación.<br><br>" +
+              "• <strong>Gestión de Casos en Rehabilitación y Reintegro Laboral:</strong> Cuando un trabajador sufre un accidente de trabajo o una enfermedad laboral, se realiza un seguimiento individual y familiar para acompañar su proceso médico, evaluar su entorno de apoyo y facilitar su reincorporación exitosa al puesto de trabajo.<br><br>" +
+              "• <strong>Diagnóstico Sociofamiliar y Visita Domiciliaria:</strong> Se emplea en procesos de bienestar laboral para conocer las condiciones de vida de los colaboradores y sus familias. Esto permite focalizar beneficios empresariales, auxilios educativos o planes de vivienda.<br><br>" +
+              "• <strong>Mediación y Resolución de Conflictos:</strong> Método clave para mejorar el clima organizacional y apoyar a los Comités de Convivencia Laboral mediante el diálogo estructurado y la negociación entre las partes."
       }
     ];
 
-    // Datos de Salud con información personalizable
+    // Datos de Salud (7 elementos exactos)
     const contenidoSalud = [
       {
         title: "Prioridades",
@@ -178,7 +221,7 @@
               "• <strong>Fortalecimiento familiar y comunitario:</strong> promover redes de apoyo para el cuidado y la recuperación."
       },
       {
-        title: "Definicion",
+        title: "Definicio",
         tag: "",
         color: "#d97706",
         pos: "sal-2",
@@ -186,7 +229,7 @@
               "La salud en Colombia se define como un derecho fundamental autónomo e irrenunciable, garantizado por el Estado a través de la Ley Estatutaria 1751 de 2015 y gestionado bajo las directrices del Ministerio de Salud y Protección Social. No se limita a la ausencia de enfermedad, sino que comprende el estado completo de bienestar físico, mental y social de cada persona."
       },
       {
-        title: "Documentos clave",
+        title: "Documentos",
         tag: "conocer",
         color: "#22c55e",
         pos: "sal-3",
@@ -242,6 +285,44 @@
               "• <strong>Fortalecimiento de redes de apoyo:</strong> involucrar a familiares, cuidadores e instituciones en el proceso de recuperación.<br>" +
               "• <strong>Planificación del egreso hospitalario:</strong> coordinar las condiciones necesarias para que el paciente continúe su tratamiento en casa de manera segura y digna.<br><br>" +
               "<strong>Aporte del Trabajo Social:</strong> contribuir a una atención integral y humanizada, reconociendo que la salud también depende de las condiciones de vida de las personas."
+      },
+      {
+        title: "Normativa",
+        tag: "Ley",
+        color: "#4f46e5",
+        pos: "sal-6",
+        info: "<strong>Normativa en el área de salud</strong><br><br>" +
+              "La normativa en salud reúne las leyes y disposiciones que buscan garantizar el derecho a la salud, la atención integral, la participación social y el bienestar de las personas.<br><br>" +
+              "• <strong>Constitución Política de Colombia de 1991</strong><br>" +
+              "  - <strong>Ente:</strong> Asamblea Nacional Constituyente.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Reconoce la seguridad social y establece la responsabilidad del Estado de garantizar el acceso a los servicios de salud.<br><br>" +
+              "• <strong>Ley 100 de 1993</strong><br>" +
+              "  - <strong>Ente:</strong> Congreso de la República de Colombia.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Crea el Sistema de Seguridad Social Integral y organiza el sistema de salud colombiano.<br><br>" +
+              "• <strong>Ley Estatutaria 1751 de 2015</strong><br>" +
+              "  - <strong>Ente:</strong> Congreso de la República de Colombia.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Reconoce la salud como un derecho fundamental autónomo e irrenunciable y garantiza el acceso a los servicios de salud sin discriminación.<br><br>" +
+              "• <strong>Resolución 3280 de 2018</strong><br>" +
+              "  - <strong>Ente:</strong> Ministerio de Salud y Protección Social.<br>" +
+              "  - <strong>¿De qué trata?:</strong> Establece lineamientos para las Rutas Integrales de Atención en Salud, fortaleciendo la promoción de la salud y la prevención de enfermedades.<br><br>" +
+              "<strong>Aporte desde Trabajo Social:</strong><br>" +
+              "• Defender los derechos de los pacientes.<br>" +
+              "• Acompañar a pacientes y familias.<br>" +
+              "• Identificar necesidades sociales.<br>" +
+              "• Fortalecer redes de apoyo.<br>" +
+              "• Promover la participación comunitaria."
+      },
+      {
+        title: "Métodos",
+        tag: "Hacer",
+        color: "#0284c7",
+        pos: "sal-7",
+        info: "<strong>MÉTODOS EN SALUD</strong><br><br>" +
+              "• <strong>Atención Primaria en Salud (APS) y enfoque comunitario:</strong> Se utiliza para acercar los servicios de salud a los territorios mediante la caracterización familiar, la educación sanitaria y la promoción de hábitos saludables.<br><br>" +
+              "• <strong>Estudio Social de Caso y Gestión de Casos:</strong> Es el método principal en instituciones prestadoras de salud (IPS) y hospitales para evaluar la situación socioeconómica, las redes de apoyo y las barreras de acceso de pacientes con enfermedades crónicas, catastróficas o en cuidados paliativos.<br><br>" +
+              "• <strong>Vigilancia Epidemiológica Comunitaria (VEC):</strong> Permite identificar de forma participativa eventos de interés en salud pública dentro de una comunidad, como brotes, desnutrición infantil o violencia intrafamiliar.<br><br>" +
+              "• <strong>Investigación Acción Participativa (IAP) y Cartografía Social:</strong> Se emplean para diagnosticar los determinantes sociales de la salud junto con los habitantes de un territorio. Ayudan a diseñar planes de promoción y prevención adaptados a la cultura local.<br><br>" +
+              "• <strong>Intervención en Crisis:</strong> Se aplica en servicios de urgencias, atención a víctimas de violencia sexual o intrafamiliar y duelo hospitalario, brindando primeros auxilios psicológicos y activación inmediata de rutas de protección."
       }
     ];
 
@@ -258,7 +339,6 @@
       contentPanel.classList.remove('active');
     }
 
-    // 1. Clic en la mochila
     backpackBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       menuContainer.classList.toggle('active');
@@ -275,7 +355,6 @@
       setTimeout(() => backpackBtn.classList.remove('pulse'), 400);
     });
 
-    // Función auxiliar para renderizar los círculos y darles la acción de abrir el panel
     function mostrarCirculos(data, contenedor) {
       contenedor.innerHTML = '';
       data.forEach(item => {
@@ -288,7 +367,6 @@
           <div class="cloud-bubble">${item.tag}</div>
         `;
 
-        // Al hacer clic en un círculo específico, se abre el panel con su información
         wrapper.addEventListener('click', (e) => {
           e.stopPropagation();
           panelTitle.textContent = item.title;
@@ -302,7 +380,6 @@
       contenedor.classList.add('active');
     }
 
-    // 2. Clic en Laboral
     btnLaboral.addEventListener('click', (e) => {
       e.stopPropagation();
       cerrarPanel();
@@ -318,7 +395,6 @@
       }
     });
 
-    // 3. Clic en Salud
     btnSalud.addEventListener('click', (e) => {
       e.stopPropagation();
       cerrarPanel();
@@ -334,13 +410,11 @@
       }
     });
 
-    // Botón para cerrar el panel de información
     closePanelBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       cerrarPanel();
     });
 
-    // Clic fuera para resetear todo
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.interaction-zone')) {
         menuContainer.classList.remove('active');

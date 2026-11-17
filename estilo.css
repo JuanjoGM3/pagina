@@ -43,44 +43,6 @@ body {
     overflow: hidden;
 }
 
-.wiki-sidebar {
-    width: 260px;
-    background-color: #ffffff;
-    border-right: 1px solid #e5e7eb;
-    padding: 30px 20px;
-}
-
-.wiki-sidebar h3 {
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: #9ca3af;
-    margin-bottom: 20px;
-}
-
-.wiki-sidebar ul {
-    list-style: none;
-}
-
-.wiki-sidebar li {
-    margin-bottom: 12px;
-}
-
-.wiki-sidebar a {
-    text-decoration: none;
-    color: #4b5563;
-    font-size: 14px;
-    display: block;
-    padding: 6px 10px;
-    border-radius: 6px;
-}
-
-.wiki-sidebar a.active {
-    background-color: rgba(37, 99, 235, 0.1);
-    color: #2563eb;
-    font-weight: 500;
-}
-
 .wiki-main {
     flex: 1;
     background: radial-gradient(circle at center, #ffffff 0%, #f4f6f9 100%);
@@ -146,7 +108,6 @@ body {
     filter: blur(15px);
     z-index: -1;
     opacity: 0.6;
-    transition: opacity 0.3s;
 }
 
 .backpack-img {
@@ -188,20 +149,18 @@ body {
     transform: translateX(0) scale(0.5);
 }
 
-/* Activar botones al abrir mochila */
 .interaction-zone.active .item-left {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(-160px) scale(1);
+    transform: translateX(-110px) scale(1);
 }
 
 .interaction-zone.active .item-right {
     opacity: 1;
     pointer-events: auto;
-    transform: translateX(160px) scale(1);
+    transform: translateX(110px) scale(1);
 }
 
-/* Persistencia cuando se selecciona un ámbito */
 .interaction-zone.active .item-left.selected-persist,
 .interaction-zone.active .item-right.selected-persist {
     border-color: #2563eb;
@@ -230,47 +189,61 @@ body {
     flex-direction: column;
     align-items: center;
     animation: fadeInScale 0.4s ease forwards;
+    cursor: pointer;
 }
 
 .circle-node {
-    width: 80px;
-    height: 80px;
+    width: 55px;
+    height: 55px;
     border-radius: 50%;
     color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 8px;
-    font-size: 10px;
+    padding: 4px;
+    font-size: 7.5px;
     font-weight: 700;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transition: transform 0.2s;
+}
+
+.orbit-item:hover .circle-node {
+    transform: scale(1.08);
 }
 
 .cloud-bubble {
     background: #e0f2fe;
     color: #0369a1;
-    padding: 3px 8px;
-    border-radius: 12px;
-    font-size: 9px;
+    padding: 2px 5px;
+    border-radius: 10px;
+    font-size: 7px;
     font-weight: 700;
-    margin-top: -5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-top: -3px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* Posiciones exclusivas a la IZQUIERDA (Ámbito Laboral) */
-.orbit-item.lab-1 { top: 30px; left: 10%; }
-.orbit-item.lab-2 { top: 120px; left: 2%; }
-.orbit-item.lab-3 { top: 240px; left: 5%; }
-.orbit-item.lab-4 { bottom: 20px; left: 15%; }
-.orbit-item.lab-5 { bottom: 20px; left: 35%; }
+/* ========================================================
+ *  POSICIONES MUY ACERCADAS AL CENTRO (IZQUIERDA - LABORAL)
+ *  ======================================================== */
+.orbit-item.lab-1 { top: -10px; left: 80px; }
+.orbit-item.lab-2 { top: 32px;  left: 45px; }
+.orbit-item.lab-3 { top: 82px;  left: 20px; }
+.orbit-item.lab-4 { top: 140px; left: 10px; }
+.orbit-item.lab-5 { top: 198px; left: 20px; }
+.orbit-item.lab-6 { top: 248px; left: 45px; }
+.orbit-item.lab-7 { top: 290px; left: 80px; }
 
-/* Posiciones exclusivas a la DERECHA (Ámbito Salud) */
-.orbit-item.sal-1 { top: 30px; right: 10%; }
-.orbit-item.sal-2 { top: 120px; right: 2%; }
-.orbit-item.sal-3 { top: 240px; right: 5%; }
-.orbit-item.sal-4 { bottom: 20px; right: 15%; }
-.orbit-item.sal-5 { bottom: 20px; right: 35%; }
+/* ========================================================
+ *  POSICIONES MUY ACERCADAS AL CENTRO (DERECHA - SALUD)
+ *  ======================================================== */
+.orbit-item.sal-1 { top: -10px; right: 80px; }
+.orbit-item.sal-2 { top: 32px;  right: 45px; }
+.orbit-item.sal-3 { top: 82px;  right: 20px; }
+.orbit-item.sal-4 { top: 140px; right: 10px; }
+.orbit-item.sal-5 { top: 198px; right: 20px; }
+.orbit-item.sal-6 { top: 248px; right: 45px; }
+.orbit-item.sal-7 { top: 290px; right: 80px; }
 
 @keyframes fadeInScale {
     from { opacity: 0; transform: scale(0.4); }
@@ -294,7 +267,7 @@ body {
     letter-spacing: 0.5px;
 }
 
-/* Estilos para el Panel de Contenido / Información */
+/* Panel de Contenido */
 .content-panel {
     position: absolute;
     width: 60%;
@@ -319,7 +292,7 @@ body {
     transform: scale(1);
 }
 
-.close-panel {
+The close-panel {
     position: absolute;
     top: 15px;
     right: 20px;
@@ -355,17 +328,4 @@ body {
     line-height: 1.6;
     border-top: 1px solid #f3f4f6;
     padding-top: 15px;
-}
-
-/* Permitir que los círculos se puedan hacer clic */
-.orbit-item {
-    cursor: pointer;
-}
-
-.circle-node {
-    transition: transform 0.2s;
-}
-
-.orbit-item:hover .circle-node {
-    transform: scale(1.08);
 }
